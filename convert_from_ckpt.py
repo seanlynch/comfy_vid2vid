@@ -444,7 +444,6 @@ def convert_scheduler_checkpoint(model):
     beta_end = model.model.linear_end
     beta_start = model.model.linear_start
     num_train_timesteps = model.model.num_timesteps
-    prediction_type = "v_prediction" if model.model.parameterization == "v" else "epsilon"
     scheduler = DDIMScheduler(
         beta_end=beta_end,
         beta_schedule="scaled_linear",
@@ -453,6 +452,6 @@ def convert_scheduler_checkpoint(model):
         steps_offset=1,
         clip_sample=False,
         set_alpha_to_one=False,
-        prediction_type=prediction_type,
+        prediction_type=model.model.model_type,
     )
     return scheduler

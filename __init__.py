@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 from comfy import model_management
 import comfy.samplers
-from .sd import load_checkpoint_guess_config, load_lora_for_models
+from comfy.sd import load_checkpoint_guess_config, load_lora_for_models
 from .convert_from_ckpt import convert_scheduler_checkpoint
 from .tuneavideo.util import ddim_inversion
 import comfy.utils

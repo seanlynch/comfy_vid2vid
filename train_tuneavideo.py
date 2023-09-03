@@ -73,7 +73,7 @@ def train(
     if seed is not None:
         set_seed(seed)
 
-    unet = model.model.model.diffusion_model.to(device)
+    unet = model.model.diffusion_model.to(device)
     unet.requires_grad_(False)
     for name, module in unet.named_modules():
         if name.endswith(tuple(trainable_modules)):
@@ -215,5 +215,5 @@ def train(
     accelerator.wait_for_everyone()
     unet = accelerator.unwrap_model(unet)
     accelerator.end_training()
-    model.model.model.diffusion_model = unet.to(torch.device("cpu"))
+    model.model.diffusion_model = unet.to(torch.device("cpu"))
     return model
